@@ -14,6 +14,15 @@ const Right = styled("div")`
   background-color: red;
 `;
 
+type TBottomContainerOpts = {
+  price: number;
+  description: string;
+  date_start: string;
+  date_end: string;
+  tags: string[];
+  zoom_link: string;
+};
+
 export default ({
   price,
   description,
@@ -21,7 +30,7 @@ export default ({
   date_end,
   tags,
   zoom_link
-}) => (
+}: TBottomContainerOpts) => (
   <Container>
     <Left>Hi</Left>
     <Right></Right>
