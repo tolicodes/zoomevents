@@ -2,6 +2,19 @@ import React from "react";
 import TopContainer from "./TopContainer";
 import Container from "../Container";
 
+type TEventDetailsOpts = {
+  name: string;
+  price: number;
+  header_image: string;
+  description: string;
+  date_start: string;
+  date_end: string;
+  creator: string;
+  rsvp_link: string;
+  slug: string;
+  tags: string[];
+  zoom_link: string;
+};
 export default ({
   name,
   price,
@@ -14,7 +27,7 @@ export default ({
   slug,
   tags,
   zoom_link
-}) => {
+}: TEventDetailsOpts) => {
   return (
     <Container>
       <TopContainer

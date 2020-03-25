@@ -1,8 +1,10 @@
 import React from "react";
-import EventDetails from "./EventDetails";
+import initFirebase from "./firebase";
+
+initFirebase();
 
 function App() {
-  return <EventDetails />;
+  return <div>Hi</div>;
 }
 
 export default App;

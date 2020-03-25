@@ -49,7 +49,21 @@ const RSVPLink = styled("button")`
   font-size: 16px;
 `;
 
-export default ({ header_image, date_start, name, creator, rsvp_link }) => (
+type TTopContainerOpts = {
+  header_image: string;
+  date_start: string;
+  name: string;
+  creator: string;
+  rsvp_link: string;
+};
+
+export default ({
+  header_image,
+  date_start,
+  name,
+  creator,
+  rsvp_link
+}: TTopContainerOpts) => (
   <TopContainer>
     <HeaderImage src={header_image} />
     <BasicDetails>
