@@ -1,8 +1,7 @@
 import React from "react";
-import EventDetails from "./EventDetails";
 
 function App() {
-  return <EventDetails />;
+  return <div>Hi</div>;
 }
 
 export default App;
