@@ -1,0 +1,23 @@
+version: "2"
+services:
+  frontend:
+    build:
+      dockerfile: ./docker/frontend.Dockerfile
+      context: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+  storybook:
+    build:
+      dockerfile: ./docker/frontend.Dockerfile
+      context: .
+    ports:
+      - "9009:9009"
+    command: yarn storybook
+  db:
+    build:
+      dockerfile: ./docker/mysql.Dockerfile
+      context: .
