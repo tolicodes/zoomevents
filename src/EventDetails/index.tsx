@@ -1,5 +1,6 @@
 import React from "react";
 import TopContainer from "./TopContainer";
+import BottomContainer from "./BottomContainer";
 import Container from "../Container";
 
 type TEventDetailsOpts = {
@@ -37,6 +38,14 @@ export default ({
         name={name}
         creator={creator}
         rsvp_link={rsvp_link}
+      />
+      <BottomContainer
+        price={price}
+        description={description}
+        date_start={date_start}
+        date_end={date_end}
+        tags={tags}
+        zoom_link={zoom_link}
       />
     </Container>
   );
