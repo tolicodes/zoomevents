@@ -8,15 +8,16 @@ const TopContainer = styled("div")`
 `;
 
 const HeaderImage = styled("img")`
-  max-width: 720px;
+  flex: 1;
+  max-height: 360px;
 `;
 
 const BasicDetails = styled("div")`
   background-color: #fafafa;
   padding: 40px;
+  width: 300px;
 
   display: flex;
-  flex: 1;
   align-items: stretch;
   flex-direction: column;
   justify-content: space-between;
@@ -45,8 +46,12 @@ const RSVPLink = styled("a")`
   height: 40px;
   border-radius: 10px;
   color: white;
-  text-align: center;
   font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 `;
 
 type TTopContainerOpts = {
