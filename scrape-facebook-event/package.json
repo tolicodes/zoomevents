@@ -1,0 +1,30 @@
+{
+  "name": "@node-cli-toolkit/send-inputs-to-cli",
+  "version": "0.4.2",
+  "description": "",
+  "scripts": {
+    "test": "jest --config jest.config.json",
+    "test:watch": "jest --config jest.config.json --watch",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^25.1.5",
+    "@types/node": "^13.7.1",
+    "inquirer": "^7.0.2",
+    "jest": "^25.1.0",
+    "ts-jest": "^25.2.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "gitHead": "0f69a00cb6dc90e539f2ad05232eee85175c570a",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "puppeteer": "^2.1.1",
+    "scrape-it": "^5.2.3",
+    "slugify": "^1.4.0"
+  }
+}

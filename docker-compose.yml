@@ -1,16 +1,25 @@
-version: "3.1"
+version: "3.4"
 services:
-  # frontend:
-  #   build:
-  #     dockerfile: ./docker/frontend.Dockerfile
-  #     context: .
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   stdin_open: true
-  #   command: yarn start
+  frontend-dev:
+    build:
+      dockerfile: ./docker/frontend.Dockerfile
+      context: .
+      target: dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    stdin_open: true
+    command: yarn start
+  frontend:
+    build:
+      dockerfile: ./docker/frontend.Dockerfile
+      context: .
+      target: prod
+    ports:
+      - "80:80"
+    image: tolicodes/zoomevents-frontend
   backend:
     build:
       dockerfile: ./docker/backend.Dockerfile
@@ -20,18 +29,25 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_HOST=db
+      - MYSQL_HOST=db
+      - MYSQL_USERNAME=root
+      - MYSQL_PASSWORD=123
+      - MYSQL_DATABASE=zoomevents
+      - PORT=4000
     volumes:
       - ./backend:/app
       - /app/node_modules
     command: yarn start
-  # storybook:
-  #   build:
-  #     dockerfile: ./docker/frontend.Dockerfile
-  #     context: .
-  #   ports:
-  #     - "9009:9009"
-  #   command: yarn storybook
+    image: tolicodes/zoomevents-backend
+  storybook:
+    build:
+      dockerfile: ./docker/frontend.Dockerfile
+      context: .
+      target: dev
+    ports:
+      - "9009:9009"
+    command: yarn storybook
+    image: tolicodes/zoomevents-storybook
   db:
     environment:
       MYSQL_ROOT_PASSWORD: "123"
