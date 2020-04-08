@@ -1,6 +1,6 @@
 import React from 'react';
-import TopContainer from '../EventDetails/TopContainer';
-import Container from '../Container';
+import TopContainer from '../TopContainer';
+import Container from '../../Container';
 
 export default {
   title: 'TopContainer',
@@ -14,7 +14,3 @@ export const Default = () => <Container><TopContainer
   creator="Germantown Jewish Center"
   rsvp_link="https://b-www.facebook.com/events/205261567227589/?event_time_id=205261570560922"
 /></Container>;
-
-Default.story = {
-  name: 'default view',
-};
