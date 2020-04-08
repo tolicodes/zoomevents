@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import moment from "moment";
 
+import Button from "../common/Button";
+
 const TopContainer = styled("div")`
   min-height: 360px;
   display: flex;
@@ -40,19 +42,7 @@ const Creator = styled("div")`
   color: #6e7283;
 `;
 
-const RSVPLink = styled("a")`
-  background-color: #3898ec;
-  width: 120px;
-  height: 40px;
-  border-radius: 10px;
-  color: white;
-  font-size: 16px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-`;
+const RSVPLink = styled(Button)``;
 
 type TTopContainerOpts = {
   header_image: string;

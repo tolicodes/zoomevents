@@ -1,5 +1,5 @@
 import React from 'react';
-import EventDetails from '../EventDetails';
+import EventDetails from '..';
 
 export default {
   title: 'EventDetails',
@@ -19,7 +19,3 @@ export const Default = () => <EventDetails
   tags={["Health and Wellness"]}
   zoom_link="https://zoom.us/j/529537100"
 />;
-
-Default.story = {
-  name: 'default view',
-};

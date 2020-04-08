@@ -1,6 +1,6 @@
 import React from 'react';
-import BottomContainer from '../EventDetails/BottomContainer';
-import Container from '../Container';
+import BottomContainer from '../BottomContainer';
+import Container from '../../Container';
 
 
 export default {
@@ -17,6 +17,3 @@ export const Default = () => <Container><BottomContainer
   zoom_link="https://zoom.us/j/529537100"
 /></Container>;
 
-Default.story = {
-  name: 'default view',
-};
