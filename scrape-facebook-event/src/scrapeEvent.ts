@@ -1,11 +1,8 @@
 const puppeteer = require("puppeteer");
 const slugify = require("slugify");
 
+import sleep from "./sleep";
 import selectors from "./event-selectors.json";
-
-const sleep = time => {
-  return new Promise(resolve => setTimeout(resolve, time));
-};
 
 // get rid of final / from url if it exists, split it by /, and get the last part (the id)
 const getPageId = url => {

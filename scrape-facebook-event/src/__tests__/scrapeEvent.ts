@@ -1,4 +1,4 @@
-import scrape from "../";
+import scrape from "../scrapeEvent";
 
 const TEST_EVENT = "https://www.facebook.com/events/213332729878339/";
 

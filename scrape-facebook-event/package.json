@@ -12,7 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^25.1.5",
-    "@types/node": "^13.7.1",
+    "@types/node": "^13.11.1",
     "inquirer": "^7.0.2",
     "jest": "^25.1.0",
     "ts-jest": "^25.2.0",
@@ -23,7 +23,9 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
+    "jquery": "^3.5.0",
     "puppeteer": "^2.1.1",
+    "puppeteer-select": "^1.0.3",
     "scrape-it": "^5.2.3",
     "slugify": "^1.4.0"
   }
