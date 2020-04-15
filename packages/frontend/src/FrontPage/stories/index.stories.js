@@ -1,5 +1,5 @@
 import React from 'react';
-import FrontPage from '../';
+import FrontPage from '..';
 import { generateCategories } from '../generateData'
 
 export default {

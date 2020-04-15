@@ -6,10 +6,8 @@ describe("@zoom-events/scrape-facebook-event/scrapeGroupForEvents", () => {
   it("should scrape a facebook event", async () => {
     jest.setTimeout(60 * 1000);
     const events = await scrapeGroupForEvents({
-      url: TEST_GROUP_URL
+      url: TEST_GROUP_URL,
     });
-
-    console.log(events);
 
     expect(events[0]).toContain("facebook.com/events/");
   });

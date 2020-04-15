@@ -7,11 +7,10 @@ export const $$evalSelectorAndText = (
   multiple = true
 ) => {
   const cbString = cb.toString();
-  console.log(args);
   return page.$$eval(
     selector,
     (els, { text, cbString, multiple, args }) => {
-      const filtered = els.filter(el => el.textContent.includes(text));
+      const filtered = els.filter((el) => el.textContent.includes(text));
       const el = multiple ? filtered : filtered[0];
 
       if (!el) return false;

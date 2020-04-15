@@ -8,7 +8,7 @@ const {
   MYSQL_USERNAME,
   MYSQL_PASSWORD,
   MYSQL_DATABASE,
-  PORT = 80
+  PORT = 80,
 } = process.env;
 
 (async () => {
@@ -22,15 +22,19 @@ const {
     synchronize: true,
     logging: true,
     entities: [__dirname + "/entity/**/*.js"],
-    insecureAuth: true
+    insecureAuth: true,
   });
 
   const express = require("express");
   const app = express();
 
-  app.get("/", async (req, res) => {
+  app.get("/events", async (req, res) => {
     const events = await connection.manager.find(Event);
     res.json(events);
+  });
+
+  app.post("/events", async (req, res) => {
+    console.log(req.body);
   });
 
   app.listen(PORT);

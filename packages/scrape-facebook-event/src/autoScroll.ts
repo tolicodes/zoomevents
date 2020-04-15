@@ -12,8 +12,6 @@ export default async (page, times) => {
 
           timesScrolled++;
 
-          console.log(timesScrolled);
-
           if (timesScrolled > times) {
             clearInterval(timer);
             resolve();

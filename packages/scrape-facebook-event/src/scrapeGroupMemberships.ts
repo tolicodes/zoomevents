@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
-const fs = require("fs").promises;
+import { promises as fs } from "fs";
 
+import loadCookies from "./loadCookies";
 import sleep from "./sleep";
 import { $evalSelectorAndText } from "./evalSelectorAndText";
 
@@ -13,13 +14,11 @@ export type Group = {
 
 export type TScrapeGroupReturn = Group[];
 
-export default async (): Promise<TScrapeGroupReturn> => {
-  const browser = await puppeteer.launch({ headless: false });
+export default async ({ saveToFile }): Promise<TScrapeGroupReturn> => {
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
 
-  const cookiesString = await fs.readFile("./cookies.json");
-  const cookies = JSON.parse(cookiesString);
-  await page.setCookie(...cookies);
+  await loadCookies(page);
 
   await page.goto(GROUPS_HOME);
 
@@ -30,7 +29,10 @@ export default async (): Promise<TScrapeGroupReturn> => {
       page,
       SEE_MORE_SELECTOR,
       "See More",
-      el => el.click()
+      (el) => {
+        el.click();
+        return true;
+      }
     );
     if (!success) break;
     // wait for results to load
@@ -44,14 +46,18 @@ export default async (): Promise<TScrapeGroupReturn> => {
   const groups = await page.$$eval(
     GROUP_SELECTOR,
     (els, URL_PREPEND) =>
-      els.map(el => ({
+      els.map((el) => ({
         name: el.textContent,
-        url: `${URL_PREPEND}${el.getAttribute("href")}`
+        url: `${URL_PREPEND}${el.getAttribute("href")}`,
       })),
     URL_PREPEND
   );
 
   browser.close();
+
+  if (saveToFile) {
+    await fs.writeFile(saveToFile, JSON.stringify(groups));
+  }
 
   return groups;
 };
