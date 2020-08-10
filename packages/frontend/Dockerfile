@@ -1,15 +1,13 @@
 FROM node:latest AS dev
 
 WORKDIR /app
-COPY ./frontend/package.json .
-COPY ./frontend/yarn.lock .
+COPY ./package.json .
+COPY ./yarn.lock .
 RUN yarn
 
-COPY ./frontend .
+COPY . .
 
 RUN yarn build
-
-RUN ls
 
 CMD yarn start
 

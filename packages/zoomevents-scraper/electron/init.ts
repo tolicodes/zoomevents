@@ -21,6 +21,8 @@ const autoStart = () => {
 export default async (page) => {
   autoStart();
   const cookiesExist = !!loadCookies(page);
+
+  console.log("cookiesExist", cookiesExist);
   if (!cookiesExist) {
     await login(page);
   }

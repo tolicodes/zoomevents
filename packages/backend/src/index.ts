@@ -1,5 +1,12 @@
 import "reflect-metadata";
 import { createConnection } from "typeorm";
+const bodyParser = require("body-parser");
+const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
+const { makeExecutableSchema } = require("graphql-tools");
+import { ApolloServer } from "apollo-server";
+import { buildSchema } from "type-graphql";
+
+import EventResolver from "./resolvers/Event";
 
 import Event from "./entity/Event";
 
@@ -28,14 +35,21 @@ const {
   const express = require("express");
   const app = express();
 
-  app.get("/events", async (req, res) => {
-    const events = await connection.manager.find(Event);
-    res.json(events);
+  const schema = await buildSchema({
+    resolvers: [EventResolver],
   });
 
-  app.post("/events", async (req, res) => {
-    console.log(req.body);
-  });
+  app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
+  app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
+
+  // app.get("/events", async (req, res) => {
+  //   const events = await connection.manager.find(Event);
+  //   res.json(events);
+  // });
+
+  // app.post("/events", async (req, res) => {
+  //   console.log(req.body);
+  // });
 
   app.listen(PORT);
 })();
